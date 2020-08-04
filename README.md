@@ -797,4 +797,43 @@ app.listen(3000, () => {
     + 非常熟悉 Nuxt.js
     + 至少百分之十的代码改动
 
+#### 3、路由
++ 基础路由
+  + 假设 pages 的目录结构如下：
+    ```js
+    pages/
+    --| user/
+    -----| index.vue
+    -----| one.vue
+    --| index.vue
+    ```
+    + 那么，Nuxt.js 自动生成的路由配置如下：
+    ```js
+    router: {
+      routes: [
+        {
+          name: 'index',
+          path: '/',
+          component: 'pages/index.vue'
+        },
+        {
+          name: 'user',
+          path: '/user',
+          component: 'pages/user/index.vue'
+        },
+        {
+          name: 'user-one',
+          path: '/user/one',
+          component: 'pages/user/one.vue'
+        }
+      ]
+    }
+    ```
++ 路由导航
+  + a 标签
+    + 它会刷新整个页面，不要使用
+  + nuxt-link 组件
+    + https://router.vuejs.org/zh/api/#router-link-props
+  + 编程式导航
+    + https://router.vuejs.org/zh/guide/essentials/navigation.html
 
