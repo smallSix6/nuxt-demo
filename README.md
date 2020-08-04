@@ -968,8 +968,53 @@ app.listen(3000, () => {
 #### 4、视图
 + 模板
   + 参考文档：https://zh.nuxtjs.org/guide/views
++ 布局
+  + uxt.js 允许你扩展默认的布局，或在 layout 目录下创建自定义的布局
+    + 默认布局
+      + 可通过添加 layouts/default.vue 文件来扩展应用的默认布局
+      + 提示: 别忘了在布局文件中添加 <nuxt/> 组件用于显示页面的主体内容。
+      + 默认布局的源码如下：
+      ```js
+      <template>
+      <div>
+      <h1>layouts/default.vue 组件</h1>
+      <!-- 页面出口，类似于子路由 -->
+      <nuxt />
+      </div>
+      </template>
 
+      <script>
+      export default {
 
+      }
+      </script>
+
+      <style scoped>
+      </style>
+      ```
+    + 自定义布局
+      + layouts 目录中的每个文件 (顶级) 都将创建一个可通过页面组件中的 layout 属性访问的自定义布局。
+      + 假设我们要创建一个 博客布局 并将其保存到layouts/blog.vue:
+      ```js
+      <template>
+        <div>
+          <div>我的博客导航栏在这里</div>
+          <nuxt />
+        </div>
+      </template>
+      ```
+      + 然后我们必须告诉页面 (即pages/posts.vue) 使用您的自定义布局：
+      ```js
+      <template>
+        <!-- Your template -->
+      </template>
+      <script>
+        export default {
+          layout: 'blog'
+          // page component definitions
+        }
+      </script>
+      ```
 
 
 
