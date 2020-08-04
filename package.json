@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-demo",
+  "version": "1.0.0",
+  "description": "### 任务一：Vuex 状态管理 #### 1、课程目标 + Vue 组件间通信方式回顾 + Vuex 核心概念和基本使用回顾 + 购物车案例 + 模拟实现 Vuex",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smallSix6/nuxt-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smallSix6/nuxt-demo/issues"
+  },
+  "homepage": "https://github.com/smallSix6/nuxt-demo#readme",
+  "dependencies": {
+    "nuxt": "^2.14.0"
+  }
+}
