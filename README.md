@@ -909,5 +909,45 @@ app.listen(3000, () => {
     + https://router.vuejs.org/zh/guide/essentials/nested-routes.html
   + Nuxt.js 嵌套路由
     + https://zh.nuxtjs.org/guide/routing/
+    + 你可以通过 vue-router 的子路由创建 Nuxt.js 应用的嵌套路由。
+    + 创建内嵌子路由，你需要添加一个 Vue 文件，同时添加一个与该文件同名的目录用来存放子视图组件。
+    + `Warning: 别忘了在父组件(.vue文件) 内增加 <nuxt-child/> 用于显示子视图内容`
+    + 假设文件结构如下：
+    ```js
+    pages/
+    --| users/
+    -----| _id.vue
+    -----| index.vue
+    --| users.vue
+    ```
+    + Nuxt.js 自动生成的路由配置如下：
+    ```js
+    router: {
+      routes: [
+        {
+          path: '/users',
+          component: 'pages/users.vue',
+          children: [
+            {
+              path: '',
+              component: 'pages/users/index.vue',
+              name: 'users'
+            },
+            {
+              path: ':id',
+              component: 'pages/users/_id.vue',
+              name: 'users-id'
+            }
+          ]
+        }
+      ]
+    }
+    ```
++ 自定义路由配置
+  + 参考文档：https://zh.nuxtjs.org/api/configuration-router
+
+
+
+
 
 
