@@ -965,6 +965,9 @@ app.listen(3000, () => {
     }
     ```
 
+#### 4、视图
++ 模板
+  + 参考文档：https://zh.nuxtjs.org/guide/views
 
 
 
