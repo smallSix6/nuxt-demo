@@ -836,4 +836,78 @@ app.listen(3000, () => {
     + https://router.vuejs.org/zh/api/#router-link-props
   + 编程式导航
     + https://router.vuejs.org/zh/guide/essentials/navigation.html
+    ```js
+    <template>
+    <div>
+    <p>About Page</p>
+    <!-- a 链接，刷新导航，走服务端渲染 -->
+    <h2>a链接</h2>
+    <a href="/">首页</a>
+
+    <!-- router-link  导航连接组件 -->
+    <h2>router-link</h2>
+    <router-link to='/'>首页</router-link>
+
+    <!-- 编程式导航 -->
+    <button @click="onClick">首页</button>
+    </div>
+    </template>
+    <script>
+    export default {
+    name: "aboutPage",
+    methods: {
+
+      onClick() {
+        this.$router.push('/')
+      }
+    }
+    }
+    </script>
+    <style scoped>
+    </style>
+    ```
++ 动态路由
+  + 在 Nuxt.js 里面定义带参数的动态路由，需要创建对应的以下划线作为前缀的 Vue 文件或目录。以下目录结构：
+  ```js
+  pages/
+  --| _slug/
+  -----| comments.vue
+  -----| index.vue
+  --| users/
+  -----| _id.vue
+  --| index.vue
+  ```
+  + Nuxt.js 生成对应的路由配置表为：
+  ```js
+  router: {
+    routes: [
+      {
+        name: 'index',
+        path: '/',
+        component: 'pages/index.vue'
+      },
+      {
+        name: 'users-id',
+        path: '/users/:id?',
+        component: 'pages/users/_id.vue'
+      },
+      {
+        name: 'slug',
+        path: '/:slug',
+        component: 'pages/_slug/index.vue'
+      },
+      {
+        name: 'slug-comments',
+        path: '/:slug/comments',
+        component: 'pages/_slug/comments.vue'
+      }
+    ]
+  }
+  ```
++ 嵌套路由
+  + Vue Router 嵌套路由
+    + https://router.vuejs.org/zh/guide/essentials/nested-routes.html
+  + Nuxt.js 嵌套路由
+    + https://zh.nuxtjs.org/guide/routing/
+
 
