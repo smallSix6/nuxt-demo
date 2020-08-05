@@ -1,12 +1,35 @@
 <template>
   <div>
     <h1>Hello world!</h1>
+    <p>{{message}}</p>
+    <p>{{foo}}</p>
+    <Test1 />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import Test1 from '@/components/Test1.vue'
 export default {
-
+  name: 'HomePage',
+  components:{
+    Test1
+  },
+  // Nuxt 中提供一个钩子函数`asyncData()`，专门用于获取服务端渲染的数据。
+  async asyncData () {
+    const { data } = await axios({
+      method: 'GET',
+      // 注意此处的 URL 要指定当前端口，否则默认会去服务端的 80 端口去查找。
+      url: 'http://localhost:3000/data.json'
+    })
+    // 这里返回的数据会和 `data () {}` 中的数据合并到一起给页面使用
+    return data
+  },
+  data() {
+    return {
+      foo: 'bar'
+    }
+  }
 }
 </script>
 
